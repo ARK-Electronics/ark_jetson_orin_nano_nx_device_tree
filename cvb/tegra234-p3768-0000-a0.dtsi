@@ -12,12 +12,14 @@
  */
 #include <dt-bindings/gpio/tegra234-gpio.h>
 #include "dt-bindings/input/input.h"
+#include <dt-bindings/usb/role.h>
 #include "tegra234-p3768-0000-a0-pwm-fan.dtsi"
 #include "tegra234-p3768-0000-a0-pcie.dtsi"
 #include "tegra234-p3768-0000-a0-fixed-regulator.dtsi"
 #include "tegra234-p3768-audio.dtsi"
-#include "tegra234-p3768-camera-rbpcv3-imx477.dtsi"
-#include "tegra234-p3768-camera-rbpcv2-imx219.dtsi"
+//#include "tegra234-p3768-camera-rbpcv3-imx477.dtsi"
+//#include "tegra234-p3768-camera-rbpcv2-imx219.dtsi"
+#include "tegra234-p3768-camera-ark-imx219.dtsi"
 
 / {
 	gpio-keys {
@@ -87,38 +89,54 @@
 						nvidia,function = "xusb";
 						status = "okay";
 					};
+					usb3-2 {
+						nvidia,function = "xusb";
+						status = "okay";
+					};					
 				};
 			};
 		};
 
 		ports {
-			usb2-0 {/* Goes to recovery port */
+			usb2-0 {/* Goes to recovery port when micro usb connected, otherwise goes to Pixhawk */
 				mode = "otg";
 				status = "okay";
 				vbus-supply = <&p3768_vdd_5v_sys>;
 				usb-role-switch;
-				port {
-					typec_p0: endpoint {
-						remote-endpoint = <&fusb_p0>;
-					};
-				};
+				connector {
+					compatible = "usb-b-connector", "gpio-usb-b-connector";
+ 					label = "micro-USB";
+ 					type = "micro";
+					id-gpio = <&tegra_main_gpio TEGRA234_MAIN_GPIO(Z, 1) GPIO_ACTIVE_LOW>;
+ 					//vbus-gpio = <&tegra_main_gpio TEGRA234_MAIN_GPIO(Z, 1) GPIO_ACTIVE_HIGH>;
+					//cable-connected-on-boot = <USB_ROLE_DEVICE>;
+ 				};
+				// port {
+				// 	typec_p0: endpoint {
+				// 		remote-endpoint = <&fusb_p0>;
+				// 	};
+				// };
 			};
 			usb2-1 {/* Goes to hub */
 				mode = "host";
 				vbus-supply = <&p3768_vdd_av10_hub>;
 				status = "okay";
 			};
-			usb2-2 {/* Goes to M2.E */
+			usb2-2 {/* Goes to Single USB A Port */
 				mode = "host";
 				vbus-supply = <&p3768_vdd_5v_sys>;
 				status = "okay";
 			};
-			usb3-0 {/* Goes to hub */
+			usb3-0 {/* Goes to Single USB A Port */
+				nvidia,usb2-companion = <2>;
+				status = "okay";
+			};
+			usb3-1 {/* Goes to Dual USB A Port (USB 2 comes from Hub)*/
 				nvidia,usb2-companion = <1>;
 				status = "okay";
 			};
-			usb3-1 {/* Goes to J5 */
-				nvidia,usb2-companion = <0>;
+			usb3-2 {/* Goes to Dual USB A Port (USB 2 comes from Hub)*/
+				nvidia,usb2-companion = <1>;
 				status = "okay";
 			};
 		};
@@ -126,9 +144,8 @@
 
 	tegra_xudc: xudc@3550000 {
 		status = "okay";
-		phys = <&{/xusb_padctl@3520000/pads/usb2/lanes/usb2-0}>,
-			<&{/xusb_padctl@3520000/pads/usb3/lanes/usb3-1}>;
-		phy-names = "usb2-0", "usb3-1";
+		phys = <&{/xusb_padctl@3520000/pads/usb2/lanes/usb2-0}>;
+		phy-names = "usb2-0";
 		nvidia,xusb-padctl = <&xusb_padctl>;
 	};
 
@@ -138,30 +155,31 @@
 			<&{/xusb_padctl@3520000/pads/usb2/lanes/usb2-1}>,
 			<&{/xusb_padctl@3520000/pads/usb2/lanes/usb2-2}>,
 			<&{/xusb_padctl@3520000/pads/usb3/lanes/usb3-0}>,
-			<&{/xusb_padctl@3520000/pads/usb3/lanes/usb3-1}>;
-		phy-names = "usb2-0", "usb2-1", "usb2-2", "usb3-0", "usb3-1";
+			<&{/xusb_padctl@3520000/pads/usb3/lanes/usb3-1}>,
+			<&{/xusb_padctl@3520000/pads/usb3/lanes/usb3-2}>;
+		phy-names = "usb2-0", "usb2-1", "usb2-2", "usb3-0", "usb3-1", "usb3-2";
 		nvidia,xusb-padctl = <&xusb_padctl>;
 	};
 
-	i2c@c240000{
-		status = "okay";
-		fusb301@25 {
-			compatible = "onsemi,fusb301";
-			reg = <0x25>;
-			status = "okay";
-			#address-cells = <1>;
-			#size-cells = <0>;
-			interrupt-parent = <&tegra_main_gpio>;
-			interrupts = <TEGRA234_MAIN_GPIO(Z, 1) IRQ_TYPE_LEVEL_LOW>;
-			connector@0 {
-				port@0 {
-					fusb_p0: endpoint {
-						remote-endpoint = <&typec_p0>;
-					};
-				};
-			};
-		};
-	};
+	// i2c@c240000{
+	// 	status = "okay";
+	// 	fusb301@25 {
+	// 		compatible = "onsemi,fusb301";
+	// 		reg = <0x25>;
+	// 		status = "okay";
+	// 		#address-cells = <1>;
+	// 		#size-cells = <0>;
+	// 		interrupt-parent = <&tegra_main_gpio>;
+	// 		interrupts = <TEGRA234_MAIN_GPIO(Z, 1) IRQ_TYPE_LEVEL_LOW>;
+	// 		connector@0 {
+	// 			port@0 {
+	// 				fusb_p0: endpoint {
+	// 					remote-endpoint = <&typec_p0>;
+	// 				};
+	// 			};
+	// 		};
+	// 	};
+	// };
 	spi@3210000{ /* SPI1 in 40 pin conn */
 		status = "okay";
 		spi@0 { /* chip select 0 */
@@ -259,35 +277,85 @@
 
 	display@13800000 {
 		status = "okay";
+		//os_gpio_hotplug_a = <&tegra_main_gpio TEGRA234_MAIN_GPIO(M, 0) GPIO_ACTIVE_HIGH>;
 	};
 
-	tegra-capture-vi  {
-		ports {
-			port@0 {
-				endpoint {
-					port-index = <1>;
+	// tegra-capture-vi  {
+	// 	ports {
+	// 		port@0 {
+	// 			endpoint {
+	// 				port-index = <1>;
+	// 			};
+	// 		};
+	// 	};
+	// };
+
+	// host1x@13e00000 {
+	// 	nvcsi@15a00000 {
+	// 		csi_chan0 {
+	// 			ports {
+	// 				port@0 {
+	// 					endpoint@0 {
+	// 						port-index = <1>;
+	// 					};
+	// 				};
+	// 			};
+	// 		};
+	// 	};
+	// };
+
+	i2c@3180000{
+		i2c@0 {
+			rbpcv2_imx219_a@10 {
+				mode0 {
+					tegra_sinterface = "serial_a";
+					lane_polarity = "6";
 				};
-			};
-		};
-	};
-
-	host1x@13e00000 {
-		nvcsi@15a00000 {
-			csi_chan0 {
+				mode1 {
+					tegra_sinterface = "serial_a";
+					lane_polarity = "6";
+				};
+				mode2 {
+					tegra_sinterface = "serial_a";
+					lane_polarity = "6";
+				};
+				mode3 {
+					tegra_sinterface = "serial_a";
+					lane_polarity = "6";
+				};
+				mode4 {
+					tegra_sinterface = "serial_a";
+					lane_polarity = "6";
+				};
 				ports {
 					port@0 {
-						endpoint@0 {
+						endpoint {
 							port-index = <1>;
 						};
 					};
 				};
 			};
-		};
-	};
 
-	cam_i2cmux{
-		i2c@0 {
-			rbpcv2_imx219_a@10 {
+	// 		rbpcv3_imx477_a@1a {
+	// 			mode0 {
+	// 				tegra_sinterface = "serial_b";
+	// 				lane_polarity = "6";
+	// 			};
+	// 			mode1 {
+	// 				tegra_sinterface = "serial_b";
+	// 				lane_polarity = "6";
+	// 			};
+	// 			ports {
+	// 				port@0 {
+	// 					endpoint {
+	// 						port-index = <1>;
+	// 					};
+	// 				};
+	// 			};
+	//		};
+		};
+		i2c@1 {
+			rbpcv2_imx219_b@10 {
 				mode0 {
 					tegra_sinterface = "serial_b";
 					lane_polarity = "6";
@@ -316,15 +384,59 @@
 					};
 				};
 			};
-
-			rbpcv3_imx477_a@1a {
+		};
+		i2c@2 {
+			rbpcv2_imx219_c@10 {
 				mode0 {
-					tegra_sinterface = "serial_b";
-					lane_polarity = "6";
+					tegra_sinterface = "serial_c";
+					lane_polarity = "0";
 				};
 				mode1 {
-					tegra_sinterface = "serial_b";
-					lane_polarity = "6";
+					tegra_sinterface = "serial_c";
+					lane_polarity = "0";
+				};
+				mode2 {
+					tegra_sinterface = "serial_c";
+					lane_polarity = "0";
+				};
+				mode3 {
+					tegra_sinterface = "serial_c";
+					lane_polarity = "0";
+				};
+				mode4 {
+					tegra_sinterface = "serial_c";
+					lane_polarity = "0";
+				};
+				ports {
+					port@0 {
+						endpoint {
+							port-index = <1>;
+						};
+					};
+				};
+			};
+		};
+		i2c@3 {
+			rbpcv2_imx219_c@10 {
+				mode0 {
+					tegra_sinterface = "serial_d";
+					lane_polarity = "0";
+				};
+				mode1 {
+					tegra_sinterface = "serial_d";
+					lane_polarity = "0";
+				};
+				mode2 {
+					tegra_sinterface = "serial_d";
+					lane_polarity = "0";
+				};
+				mode3 {
+					tegra_sinterface = "serial_d";
+					lane_polarity = "0";
+				};
+				mode4 {
+					tegra_sinterface = "serial_d";
+					lane_polarity = "0";
 				};
 				ports {
 					port@0 {
