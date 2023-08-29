@@ -62,12 +62,12 @@
 			num-channels = <4>;
 			#address-cells = <1>;
 			#size-cells = <0>;
-			csi_chan0: channel@0 {
+			channel@0 {
 				reg = <0>;
 				ports {
 					#address-cells = <1>;
 					#size-cells = <0>;
-					csi_chan0_port0: port@0 {
+					channel0_port0: port@0 {
 						reg = <0>;
 						rbpcv2_imx219_csi_in0: endpoint@0 {
 							port-index = <0>;
@@ -75,7 +75,7 @@
 							remote-endpoint = <&rbpcv2_imx219_out0>;
 						};
 					};
-					csi_chan0_port1: port@1 {
+					channel0_port1: port@1 {
 						reg = <1>;
 						rbpcv2_imx219_csi_out0: endpoint@1 {
 							remote-endpoint = <&rbpcv2_imx219_vi_in0>;
@@ -83,12 +83,12 @@
 					};
 				};
 			};
-			csi_chan1: channel@1 {
+			channel@1 {
 				reg = <1>;
 				ports {
 					#address-cells = <1>;
 					#size-cells = <0>;
-					csi_chan1_port0: port@0 {
+					channel1_port0: port@0 {
 						reg = <0>;
 						rbpcv2_imx219_csi_in1: endpoint@2 {
 							port-index = <1>;
@@ -96,7 +96,7 @@
 							remote-endpoint = <&rbpcv2_imx219_out1>;
 						};
 					};
-					csi_chan1_port1: port@1 {
+					channel1_port1: port@1 {
 						reg = <1>;
 						rbpcv2_imx219_csi_out1: endpoint@3 {
 							remote-endpoint = <&rbpcv2_imx219_vi_in1>;
@@ -104,12 +104,12 @@
 					};
 				};
 			};
-			csi_chan2: channel@2 {
+			channel@2 {
 				reg = <2>;
 				ports {
 					#address-cells = <1>;
 					#size-cells = <0>;
-					csi_chan2_port0: port@0 {
+					channel2_port0: port@0 {
 						reg = <0>;
 						rbpcv2_imx219_csi_in2: endpoint@4 {
 							port-index = <2>;
@@ -117,7 +117,7 @@
 							remote-endpoint = <&rbpcv2_imx219_out2>;
 						};
 					};
-					csi_chan2_port1: port@1 {
+					channel2_port1: port@1 {
 						reg = <1>;
 						rbpcv2_imx219_csi_out2: endpoint@5 {
 							remote-endpoint = <&rbpcv2_imx219_vi_in2>;
@@ -125,12 +125,12 @@
 					};
 				};
 			};
-			csi_chan3: channel@3 {
+			channel@3 {
 				reg = <3>;
 				ports {
 					#address-cells = <1>;
 					#size-cells = <0>;
-					csi_chan3_port0: port@0 {
+					channel3_port0: port@0 {
 						reg = <0>;
 						rbpcv2_imx219_csi_in3: endpoint@6 {
 							port-index = <3>;
@@ -138,7 +138,7 @@
 							remote-endpoint = <&rbpcv2_imx219_out3>;
 						};
 					};
-					csi_chan3_port1: port@1 {
+					channel3_port1: port@1 {
 						reg = <1>;
 						rbpcv2_imx219_csi_out3: endpoint@7 {
 							remote-endpoint = <&rbpcv2_imx219_vi_in3>;
@@ -266,7 +266,7 @@
 					discontinuous_clk = "yes";
 					dpcm_enable = "false";
 					cil_settletime = "0";
-					lane_polarity = "6";
+					lane_polarity = "2";
 
 					active_w = "3280";
 					active_h = "2464";
@@ -307,7 +307,7 @@
 					discontinuous_clk = "yes";
 					dpcm_enable = "false";
 					cil_settletime = "0";
-					lane_polarity = "6";
+					lane_polarity = "2";
 
 					active_w = "3280";
 					active_h = "1848";
@@ -348,7 +348,7 @@
 					discontinuous_clk = "yes";
 					dpcm_enable = "false";
 					cil_settletime = "0";
-					lane_polarity = "6";
+					lane_polarity = "2";
 
 					active_w = "1920";
 					active_h = "1080";
@@ -390,7 +390,7 @@
 					discontinuous_clk = "yes";
 					dpcm_enable = "false";
 					cil_settletime = "0";
-					lane_polarity = "6";
+					lane_polarity = "2";
 
 					active_w = "1640";
 					active_h = "1232";
@@ -432,7 +432,7 @@
 					discontinuous_clk = "yes";
 					dpcm_enable = "false";
 					cil_settletime = "0";
-					lane_polarity = "6";
+					lane_polarity = "2";
 
 					active_w = "1280";
 					active_h = "720";
@@ -474,7 +474,7 @@
 					* discontinuous_clk = "yes";
 					* dpcm_enable = "false";
 					* cil_settletime = "0";
-					* lane_polarity = "6";
+					* lane_polarity = "2";
 
 					* active_w = "1280";
 					* active_h = "720";
@@ -630,7 +630,7 @@
 					discontinuous_clk = "yes";
 					dpcm_enable = "false";
 					cil_settletime = "0";
-					lane_polarity = "6";
+					lane_polarity = "1";
 
 					active_w = "3280";
 					active_h = "2464";
@@ -671,7 +671,7 @@
 					discontinuous_clk = "yes";
 					dpcm_enable = "false";
 					cil_settletime = "0";
-					lane_polarity = "6";
+					lane_polarity = "1";
 
 					active_w = "3280";
 					active_h = "1848";
@@ -712,7 +712,7 @@
 					discontinuous_clk = "yes";
 					dpcm_enable = "false";
 					cil_settletime = "0";
-					lane_polarity = "6";
+					lane_polarity = "1";
 
 					active_w = "1920";
 					active_h = "1080";
@@ -753,7 +753,7 @@
 					discontinuous_clk = "yes";
 					dpcm_enable = "false";
 					cil_settletime = "0";
-					lane_polarity = "6";
+					lane_polarity = "1";
 
 					active_w = "1640";
 					active_h = "1232";
@@ -794,7 +794,7 @@
 					discontinuous_clk = "yes";
 					dpcm_enable = "false";
 					cil_settletime = "0";
-					lane_polarity = "6";
+					lane_polarity = "1";
 
 					active_w = "1280";
 					active_h = "720";
@@ -836,7 +836,7 @@
 				*	discontinuous_clk = "yes";
 				*	dpcm_enable = "false";
 				*	cil_settletime = "0";
-				*	lane_polarity = "6";
+				*	lane_polarity = "1";
 
 				*	active_w = "1280";
 				*	active_h = "720";
