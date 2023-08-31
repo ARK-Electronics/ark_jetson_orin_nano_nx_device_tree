@@ -630,7 +630,7 @@
 					discontinuous_clk = "yes";
 					dpcm_enable = "false";
 					cil_settletime = "0";
-					lane_polarity = "1";
+					lane_polarity = "4";
 
 					active_w = "3280";
 					active_h = "2464";
@@ -671,7 +671,7 @@
 					discontinuous_clk = "yes";
 					dpcm_enable = "false";
 					cil_settletime = "0";
-					lane_polarity = "1";
+					lane_polarity = "4";
 
 					active_w = "3280";
 					active_h = "1848";
@@ -712,7 +712,7 @@
 					discontinuous_clk = "yes";
 					dpcm_enable = "false";
 					cil_settletime = "0";
-					lane_polarity = "1";
+					lane_polarity = "4";
 
 					active_w = "1920";
 					active_h = "1080";
@@ -753,7 +753,7 @@
 					discontinuous_clk = "yes";
 					dpcm_enable = "false";
 					cil_settletime = "0";
-					lane_polarity = "1";
+					lane_polarity = "4";
 
 					active_w = "1640";
 					active_h = "1232";
@@ -794,7 +794,7 @@
 					discontinuous_clk = "yes";
 					dpcm_enable = "false";
 					cil_settletime = "0";
-					lane_polarity = "1";
+					lane_polarity = "4";
 
 					active_w = "1280";
 					active_h = "720";
