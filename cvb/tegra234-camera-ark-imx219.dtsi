@@ -63,7 +63,7 @@
 			#address-cells = <1>;
 			#size-cells = <0>;
 			status = "okay";
-			channel@0 {
+			csi_chan0: channel@0 {
 				reg = <0>;
 				ports {
 					#address-cells = <1>;
@@ -84,7 +84,7 @@
 					};
 				};
 			};
-			channel@1 {
+			csi_chan1: channel@1 {
 				reg = <1>;
 				ports {
 					#address-cells = <1>;
@@ -105,7 +105,7 @@
 					};
 				};
 			};
-			channel@2 {
+			csi_chan2: channel@2 {
 				reg = <2>;
 				ports {
 					#address-cells = <1>;
@@ -126,7 +126,7 @@
 					};
 				};
 			};
-			channel@3 {
+			csi_chan3: channel@3 {
 				reg = <3>;
 				ports {
 					#address-cells = <1>;
@@ -152,8 +152,8 @@
 
 	i2c@3180000 {
 		tca9546@70 {
-			i2c@0 {
-			rbpcv2_imx219_a@10 {
+			i2c_0: i2c@0 {
+			imx219_cam0: rbpcv2_imx219_a@10 {
 				compatible = "sony,imx219";
 				/* I2C device address */
 				reg = <0x10>;
@@ -524,8 +524,8 @@
 				};
 			};
 		};
-		i2c@1 {
-			rbpcv2_imx219_b@10 {
+		i2c_1: i2c@1 {
+			imx219_cam1: rbpcv2_imx219_b@10 {
 				compatible = "sony,imx219";
 				/* I2C device address */
 				reg = <0x10>;
@@ -885,8 +885,8 @@
 				};
 			};
 		};
-		i2c@2 {
-			rbpcv2_imx219_c@10 {
+		i2c_2: i2c@2 {
+			imx219_cam2: rbpcv2_imx219_c@10 {
 				compatible = "sony,imx219";
 				/* I2C device address */
 				reg = <0x10>;
@@ -1257,8 +1257,8 @@
 				};
 			};
 		};
-		i2c@3 {
-			rbpcv2_imx219_d@10 {
+		i2c_3: i2c@3 {
+			imx219_cam3: rbpcv2_imx219_d@10 {
 				compatible = "sony,imx219";
 				/* I2C device address */
 				reg = <0x10>;
@@ -1640,7 +1640,7 @@
 		aperture = "0.0";
 	};
 
-	tegra-camera-platform {
+	tcp: tegra-camera-platform {
 		compatible = "nvidia, tegra-camera-platform";
 		/**
 		* Physical settings to calculate max ISO BW
@@ -1687,58 +1687,58 @@
 		 * in the module's specsheet from the vendor.
 		 */
 		modules {
-			module0 {
+			cam_module0: module0 {
 				badge = "topleft_RBP194";
 				position = "topleft";
 				orientation = "1";
-				drivernode0 {
+				cam_module0_drivernode0: drivernode0 {
 					pcl_id = "v4l2_sensor";
 					devname = "imx219 30-0010";
 					proc-device-tree = "/proc/device-tree/i2c@3180000/tca9546@70/i2c@0/rbpcv2_imx219_a@10";
 				};
-				drivernode1 {
+				cam_module0_drivernode1: drivernode1 {
 					pcl_id = "v4l2_lens";
 					proc-device-tree = "/proc/device-tree/lens_imx219@RBPCV2/";
 				};
 			};
-			module1 {
+			cam_module1: module1 {
 				badge = "topright_RBP194";
 				position = "topright";
 				orientation = "1";
-				drivernode0 {
+				cam_module1_drivernode0: drivernode0 {
 					pcl_id = "v4l2_sensor";
 					devname = "imx219 31-0010";
 					proc-device-tree = "/proc/device-tree/i2c@3180000/tca9546@70/i2c@1/rbpcv2_imx219_b@10";
 				};
-				drivernode1 {
+				cam_module1_drivernode1: drivernode1 {
 					pcl_id = "v4l2_lens";
 					proc-device-tree = "/proc/device-tree/lens_imx219@RBPCV2/";
 				};
 			};
-			module2 {
+			cam_module2: module2 {
 				badge = "bottomright_RBP194";
 				position = "bottomright";
 				orientation = "1";
-				drivernode0 {
+				cam_module2_drivernode0: drivernode0 {
 					pcl_id = "v4l2_sensor";
 					devname = "imx219 32-0010";
 					proc-device-tree = "/proc/device-tree/i2c@3180000/tca9546@70/i2c@2/rbpcv2_imx219_c@10";
 				};
-				drivernode1 {
+				cam_module2_drivernode1: drivernode1 {
 					pcl_id = "v4l2_lens";
 					proc-device-tree = "/proc/device-tree/lens_imx219@RBPCV2/";
 				};
 			};
-			module3 {
+			cam_module3: module3 {
 				badge = "bottomleft_RBP194";
 				position = "bottomleft";
 				orientation = "1";
-				drivernode0 {
+				cam_module3_drivernode0: drivernode0 {
 					pcl_id = "v4l2_sensor";
 					devname = "imx219 33-0010";
 					proc-device-tree = "/proc/device-tree/i2c@3180000/tca9546@70/i2c@3/rbpcv2_imx219_d@10";
 				};
-				drivernode1 {
+				cam_module3_drivernode1: drivernode1 {
 					pcl_id = "v4l2_lens";
 					proc-device-tree = "/proc/device-tree/lens_imx219@RBPCV2/";
 				};
