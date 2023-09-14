@@ -26,18 +26,18 @@
 #define CAMERA_I2C_MUX_BUS(x) (0x1E + x)
 
 / {
-	i2c@3180000 {
-		gpio@2200000 {
-			camera-control-output-low {
-				gpio-hog;
-				output-low;
-				gpios = <CAM0_PWDN 0 CAM1_PWDN 0
-					CAM2_PWDN 0 CAM3_PWDN 0>;
-				label = "cam0-pwdn","cam1-pwdn",
-					"cam2-pwdn", "cam3-pwdn";
-			};
+	gpio@2200000 {
+		camera-control-output-high {
+			gpio-hog;
+			output-high;
+			gpios = <CAM0_PWDN 1 CAM1_PWDN 1
+				CAM2_PWDN 1 CAM3_PWDN 1>;
+			label = "cam0-pwdn","cam1-pwdn",
+				"cam2-pwdn", "cam3-pwdn";
 		};
+	};
 
+	i2c@3180000 {
 		tca9546@70 {
 			compatible = "nxp,pca9546";
 			reg = <0x70>;
@@ -55,14 +55,14 @@
 				rbpcv2_imx219_a@10 {
 					/* Define any required hw resources needed by driver */
 					/* ie. clocks, io pins, power sources */
-          			#address-cells = <1>; 
-          			#size-cells = <0>;
-					status = "okay";  
-					clocks = <&bpmp_clks TEGRA234_CLK_EXTPERIPH1>,
-						 <&bpmp_clks TEGRA234_CLK_PLLP_OUT0>;
-					clock-names = "extperiph1", "pllp_grtba";
-					mclk = "extperiph1";
-					reset-gpios = <&tegra_main_gpio CAM0_PWDN GPIO_ACTIVE_LOW>;
+          			//#address-cells = <1>; 
+          			//#size-cells = <0>;
+					//status = "okay";  
+					//clocks = <&bpmp_clks TEGRA234_CLK_EXTPERIPH1>,
+					//	 <&bpmp_clks TEGRA234_CLK_PLLP_OUT0>;
+					//clock-names = "extperiph1", "pllp_grtba";
+					//mclk = "extperiph1";
+					reset-gpios = <&tegra_main_gpio CAM0_PWDN GPIO_ACTIVE_HIGH>;
 				};
 			};
 			i2c@1 {
@@ -73,14 +73,14 @@
 				rbpcv2_imx219_b@10 {
 					/* Define any required hw resources needed by driver */
 					/* ie. clocks, io pins, power sources */
-          			#address-cells = <1>; 
-          			#size-cells = <0>;
-					status = "okay";  
-					clocks = <&bpmp_clks TEGRA234_CLK_EXTPERIPH2>,
-						 <&bpmp_clks TEGRA234_CLK_PLLP_OUT0>;
-					clock-names = "extperiph2", "pllp_grtba";
-					mclk = "extperiph2";
-					reset-gpios = <&tegra_main_gpio CAM1_PWDN GPIO_ACTIVE_LOW>;
+          			//#address-cells = <1>; 
+          			//#size-cells = <0>;
+					//status = "okay";  
+					//clocks = <&bpmp_clks TEGRA234_CLK_EXTPERIPH2>,
+					//	 <&bpmp_clks TEGRA234_CLK_PLLP_OUT0>;
+					//clock-names = "extperiph2", "pllp_grtba";
+					//mclk = "extperiph2";
+					reset-gpios = <&tegra_main_gpio CAM1_PWDN GPIO_ACTIVE_HIGH>;
 				};
 			};
 			i2c@2 {
@@ -91,14 +91,14 @@
 				rbpcv2_imx219_c@10 {
 					/* Define any required hw resources needed by driver */
 					/* ie. clocks, io pins, power sources */ 	
-          			#address-cells = <1>; 
-          			#size-cells = <0>;
-					status = "okay";  
-					clocks = <&bpmp_clks TEGRA234_CLK_EXTPERIPH3>,
-						 <&bpmp_clks TEGRA234_CLK_PLLP_OUT0>;
-					clock-names = "extperiph3", "pllp_grtba";
-					mclk = "extperiph3";
-					reset-gpios = <&tegra_main_gpio CAM2_PWDN GPIO_ACTIVE_LOW>;
+          			//#address-cells = <1>; 
+          			//#size-cells = <0>;
+					//status = "okay";  
+					//clocks = <&bpmp_clks TEGRA234_CLK_EXTPERIPH3>,
+					//	 <&bpmp_clks TEGRA234_CLK_PLLP_OUT0>;
+					//clock-names = "extperiph3", "pllp_grtba";
+					//mclk = "extperiph3";
+					reset-gpios = <&tegra_main_gpio CAM2_PWDN GPIO_ACTIVE_HIGH>;
 				};
 			};
 			i2c@3 {
@@ -109,14 +109,14 @@
 				rbpcv2_imx219_d@10 {
 					/* Define any required hw resources needed by driver */
 					/* ie. clocks, io pins, power sources */
-          			#address-cells = <1>; 
-          			#size-cells = <0>;
-					status = "okay";  
-					clocks = <&bpmp_clks TEGRA234_CLK_EXTPERIPH4>,
-						 <&bpmp_clks TEGRA234_CLK_PLLP_OUT0>;
-					clock-names = "extperiph4", "pllp_grtba";
-					mclk = "extperiph4";
-					reset-gpios = <&tegra_aon_gpio CAM3_PWDN GPIO_ACTIVE_LOW>;
+          			//#address-cells = <1>; 
+          			//#size-cells = <0>;
+					//status = "okay";  
+					//clocks = <&bpmp_clks TEGRA234_CLK_EXTPERIPH4>,
+					//	 <&bpmp_clks TEGRA234_CLK_PLLP_OUT0>;
+					//clock-names = "extperiph4", "pllp_grtba";
+					//mclk = "extperiph4";
+					reset-gpios = <&tegra_aon_gpio CAM3_PWDN GPIO_ACTIVE_HIGH>;
 				};
 			};
 		};
