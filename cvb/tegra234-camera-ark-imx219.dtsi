@@ -62,6 +62,7 @@
 			num-channels = <4>;
 			#address-cells = <1>;
 			#size-cells = <0>;
+			status = "okay";
 			channel@0 {
 				reg = <0>;
 				ports {
@@ -1638,10 +1639,8 @@
 		f_number = "2.0";
 		aperture = "0.0";
 	};
-};
 
-/ {
-	tcp: tegra-camera-platform {
+	tegra-camera-platform {
 		compatible = "nvidia, tegra-camera-platform";
 		/**
 		* Physical settings to calculate max ISO BW
@@ -1688,58 +1687,58 @@
 		 * in the module's specsheet from the vendor.
 		 */
 		modules {
-			cam_module0: module0 {
+			module0 {
 				badge = "topleft_RBP194";
 				position = "topleft";
 				orientation = "1";
-				cam_module0_drivernode0: drivernode0 {
+				drivernode0 {
 					pcl_id = "v4l2_sensor";
 					devname = "imx219 9-0010";
 					proc-device-tree = "/proc/device-tree/i2c@3180000/tca9546@70/i2c@0/rbpcv2_imx219_a@10";
 				};
-				cam_module0_drivernode1: drivernode1 {
+				drivernode1 {
 					pcl_id = "v4l2_lens";
 					proc-device-tree = "/proc/device-tree/lens_imx219@RBPCV2/";
 				};
 			};
-			cam_module1: module1 {
+			module1 {
 				badge = "topright_RBP194";
 				position = "topright";
 				orientation = "1";
-				cam_module1_drivernode0: drivernode0 {
+				drivernode0 {
 					pcl_id = "v4l2_sensor";
 					devname = "imx219 10-0010";
 					proc-device-tree = "/proc/device-tree/i2c@3180000/tca9546@70/i2c@1/rbpcv2_imx219_b@10";
 				};
-				cam_module1_drivernode1: drivernode1 {
+				drivernode1 {
 					pcl_id = "v4l2_lens";
 					proc-device-tree = "/proc/device-tree/lens_imx219@RBPCV2/";
 				};
 			};
-			cam_module2: module2 {
+			module2 {
 				badge = "bottomright_RBP194";
 				position = "bottomright";
 				orientation = "1";
-				cam_module2_drivernode0: drivernode0 {
+				drivernode0 {
 					pcl_id = "v4l2_sensor";
 					devname = "imx219 11-0010";
 					proc-device-tree = "/proc/device-tree/i2c@3180000/tca9546@70/i2c@2/rbpcv2_imx219_c@10";
 				};
-				cam_module2_drivernode1: drivernode1 {
+				drivernode1 {
 					pcl_id = "v4l2_lens";
 					proc-device-tree = "/proc/device-tree/lens_imx219@RBPCV2/";
 				};
 			};
-			cam_module3: module3 {
+			module3 {
 				badge = "bottomleft_RBP194";
 				position = "bottomleft";
 				orientation = "1";
-				cam_module3_drivernode0: drivernode0 {
+				drivernode0 {
 					pcl_id = "v4l2_sensor";
 					devname = "imx219 12-0010";
 					proc-device-tree = "/proc/device-tree/i2c@3180000/tca9546@70/i2c@3/rbpcv2_imx219_d@10";
 				};
-				cam_module3_drivernode1: drivernode1 {
+				drivernode1 {
 					pcl_id = "v4l2_lens";
 					proc-device-tree = "/proc/device-tree/lens_imx219@RBPCV2/";
 				};
