@@ -22,7 +22,7 @@
 		ports {
 			#address-cells = <1>;
 			#size-cells = <0>;
-			vi_port0: port@0 {
+			port@0 {
 				reg = <0>;
 				rbpcv2_imx219_vi_in0: endpoint {
 					port-index = <0>;
@@ -30,7 +30,7 @@
 					remote-endpoint = <&rbpcv2_imx219_csi_out0>;
 				};
 			};
-			vi_port1: port@1 {
+			port@1 {
 				reg = <1>;
 				rbpcv2_imx219_vi_in1: endpoint {
 					port-index = <1>;
@@ -38,7 +38,7 @@
 					remote-endpoint = <&rbpcv2_imx219_csi_out1>;
 				};
 			};
-			vi_port2: port@2 {
+			port@2 {
 				reg = <2>;
 				rbpcv2_imx219_vi_in2: endpoint {
 					port-index = <2>;
@@ -46,7 +46,7 @@
 					remote-endpoint = <&rbpcv2_imx219_csi_out2>;
 				};
 			};
-			vi_port3: port@3 {
+			port@3 {
 				reg = <3>;
 				rbpcv2_imx219_vi_in3: endpoint {
 					port-index = <3>;
@@ -67,7 +67,7 @@
 				ports {
 					#address-cells = <1>;
 					#size-cells = <0>;
-					channel0_port0: port@0 {
+					port@0 {
 						reg = <0>;
 						rbpcv2_imx219_csi_in0: endpoint@0 {
 							port-index = <0>;
@@ -75,7 +75,7 @@
 							remote-endpoint = <&rbpcv2_imx219_out0>;
 						};
 					};
-					channel0_port1: port@1 {
+					port@1 {
 						reg = <1>;
 						rbpcv2_imx219_csi_out0: endpoint@1 {
 							remote-endpoint = <&rbpcv2_imx219_vi_in0>;
@@ -88,7 +88,7 @@
 				ports {
 					#address-cells = <1>;
 					#size-cells = <0>;
-					channel1_port0: port@0 {
+					port@0 {
 						reg = <0>;
 						rbpcv2_imx219_csi_in1: endpoint@2 {
 							port-index = <1>;
@@ -96,7 +96,7 @@
 							remote-endpoint = <&rbpcv2_imx219_out1>;
 						};
 					};
-					channel1_port1: port@1 {
+					port@1 {
 						reg = <1>;
 						rbpcv2_imx219_csi_out1: endpoint@3 {
 							remote-endpoint = <&rbpcv2_imx219_vi_in1>;
@@ -109,7 +109,7 @@
 				ports {
 					#address-cells = <1>;
 					#size-cells = <0>;
-					channel2_port0: port@0 {
+					port@0 {
 						reg = <0>;
 						rbpcv2_imx219_csi_in2: endpoint@4 {
 							port-index = <2>;
@@ -117,7 +117,7 @@
 							remote-endpoint = <&rbpcv2_imx219_out2>;
 						};
 					};
-					channel2_port1: port@1 {
+					port@1 {
 						reg = <1>;
 						rbpcv2_imx219_csi_out2: endpoint@5 {
 							remote-endpoint = <&rbpcv2_imx219_vi_in2>;
@@ -130,7 +130,7 @@
 				ports {
 					#address-cells = <1>;
 					#size-cells = <0>;
-					channel3_port0: port@0 {
+					port@0 {
 						reg = <0>;
 						rbpcv2_imx219_csi_in3: endpoint@6 {
 							port-index = <3>;
@@ -138,7 +138,7 @@
 							remote-endpoint = <&rbpcv2_imx219_out3>;
 						};
 					};
-					channel3_port1: port@1 {
+					port@1 {
 						reg = <1>;
 						rbpcv2_imx219_csi_out3: endpoint@7 {
 							remote-endpoint = <&rbpcv2_imx219_vi_in3>;
@@ -152,7 +152,7 @@
 	i2c@3180000 {
 		tca9546@70 {
 			i2c@0 {
-			imx219_cam0: rbpcv2_imx219_a@10 {
+			rbpcv2_imx219_a@10 {
 				compatible = "sony,imx219";
 				/* I2C device address */
 				reg = <0x10>;
@@ -515,7 +515,6 @@
 					port@0 {
 						reg = <0>;
 						rbpcv2_imx219_out0: endpoint {
-							status = "okay";
 							port-index = <0>;
 							bus-width = <2>;
 							remote-endpoint = <&rbpcv2_imx219_csi_in0>;
@@ -525,7 +524,7 @@
 			};
 		};
 		i2c@1 {
-			imx219_cam1: rbpcv2_imx219_b@10 {
+			rbpcv2_imx219_b@10 {
 				compatible = "sony,imx219";
 				/* I2C device address */
 				reg = <0x10>;
@@ -877,7 +876,6 @@
 					port@0 {
 						reg = <0>;
 						rbpcv2_imx219_out1: endpoint {
-							status = "okay";
 							port-index = <1>;
 							bus-width = <2>;
 							remote-endpoint = <&rbpcv2_imx219_csi_in1>;
@@ -887,7 +885,7 @@
 			};
 		};
 		i2c@2 {
-			imx219_cam2: rbpcv2_imx219_c@10 {
+			rbpcv2_imx219_c@10 {
 				compatible = "sony,imx219";
 				/* I2C device address */
 				reg = <0x10>;
@@ -1250,7 +1248,6 @@
 					port@0 {
 						reg = <0>;
 						rbpcv2_imx219_out2: endpoint {
-							status = "okay";
 							port-index = <2>;
 							bus-width = <2>;
 							remote-endpoint = <&rbpcv2_imx219_csi_in2>;
@@ -1260,7 +1257,7 @@
 			};
 		};
 		i2c@3 {
-			imx219_cam3: rbpcv2_imx219_d@10 {
+			rbpcv2_imx219_d@10 {
 				compatible = "sony,imx219";
 				/* I2C device address */
 				reg = <0x10>;
@@ -1623,15 +1620,14 @@
 					port@0 {
 						reg = <0>;
 						rbpcv2_imx219_out3: endpoint {
-							status = "okay";
 							port-index = <3>;
 							bus-width = <2>;
 							remote-endpoint = <&rbpcv2_imx219_csi_in3>;
+							};
 						};
 					};
 				};
 			};
-		};
 		};
 	};
 
@@ -1643,6 +1639,7 @@
 		aperture = "0.0";
 	};
 };
+
 / {
 	tcp: tegra-camera-platform {
 		compatible = "nvidia, tegra-camera-platform";
