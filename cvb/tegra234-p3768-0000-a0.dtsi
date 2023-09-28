@@ -18,6 +18,7 @@
 #include "tegra234-p3768-0000-a0-fixed-regulator.dtsi"
 #include "tegra234-p3768-audio.dtsi"
 #include "tegra234-p3768-camera-ark-imx219.dtsi"
+//#include "tegra234-p3768-camera-ark-imx477.dtsi"
 
 / {
 	gpio-keys {
