@@ -27,7 +27,7 @@
 / {
 	gpio@2200000 {
 		camera-control-output-high {
-			gpio-hog;
+			//gpio-hog;
 			output-high;
 			gpios = <CAM0_PWDN 1 CAM1_PWDN 1
 				CAM2_PWDN 1 CAM3_PWDN 1>;
