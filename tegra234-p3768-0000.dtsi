@@ -72,17 +72,29 @@
 							nvidia,function = "xusb";
 							status = "okay";
 						};
+
+						usb3-2 {
+							nvidia,function = "xusb";
+							status = "okay";
+						};
 					};
 				};
 			};
 
 			ports {
-				/* recovery port */
+				/* recovery port when micro usb connected, otherwise pixhawk */
 				usb2-0 {
 					mode = "otg";
 					vbus-supply = <&vdd_5v0_sys>;
 					status = "okay";
 					usb-role-switch;
+
+					connector {
+						compatible = "usb-b-connector", "gpio-usb-b-connector";
+						label = "micro-USB";
+						type = "micro";
+						id-gpio = <&gpio TEGRA234_MAIN_GPIO(Z, 1) GPIO_ACTIVE_LOW>;
+					};
 				};
 
 				/* hub */
@@ -92,22 +104,28 @@
 					status = "okay";
 				};
 
-				/* M.2 Key-E */
+				/* single USB A port */
 				usb2-2 {
 					mode = "host";
 					vbus-supply = <&vdd_5v0_sys>;
 					status = "okay";
 				};
 
-				/* hub */
+				/* single USB A port */
 				usb3-0 {
+					nvidia,usb2-companion = <2>;
+					status = "okay";
+				};
+
+				/* dual USB A port */
+				usb3-1 {
 					nvidia,usb2-companion = <1>;
 					status = "okay";
 				};
 
-				/* J5 */
-				usb3-1 {
-					nvidia,usb2-companion = <0>;
+				/* dual USB A port */
+				usb3-2 {
+					nvidia,usb2-companion = <1>;
 					status = "okay";
 				};
 			};
@@ -116,9 +134,8 @@
 		usb@3550000 {
 			status = "okay";
 
-			phys = <&{/bus@0/padctl@3520000/pads/usb2/lanes/usb2-0}>,
-			       <&{/bus@0/padctl@3520000/pads/usb3/lanes/usb3-1}>;
-			phy-names = "usb2-0", "usb3-0";
+			phys = <&{/bus@0/padctl@3520000/pads/usb2/lanes/usb2-0}>;
+			phy-names = "usb2-0";
 		};
 
 		usb@3610000 {
@@ -128,9 +145,10 @@
 			       <&{/bus@0/padctl@3520000/pads/usb2/lanes/usb2-1}>,
 			       <&{/bus@0/padctl@3520000/pads/usb2/lanes/usb2-2}>,
 			       <&{/bus@0/padctl@3520000/pads/usb3/lanes/usb3-0}>,
-			       <&{/bus@0/padctl@3520000/pads/usb3/lanes/usb3-1}>;
+			       <&{/bus@0/padctl@3520000/pads/usb3/lanes/usb3-1}>,
+			       <&{/bus@0/padctl@3520000/pads/usb3/lanes/usb3-2}>;
 			phy-names = "usb2-0", "usb2-1", "usb2-2", "usb3-0",
-				    "usb3-1";
+				    "usb3-1", "usb3-2";
 		};
 
 		/* C8 - Ethernet */
