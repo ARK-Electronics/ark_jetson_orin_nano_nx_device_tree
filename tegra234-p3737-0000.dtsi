@@ -69,6 +69,10 @@
 			status = "okay";
 		};
 
+		pwm@32e0000 {
+			status = "okay";
+		};
+
 		pwm@32f0000 {
 			status = "okay";
 		};
