@@ -10,7 +10,7 @@
 #include <dt-bindings/tegra234-p3767-0000-common.h>
 
 / {
-	overlay-name = "Camera OV9282 Single";
+	overlay-name = "Camera ARK IMX477 Single";
 	jetson-header-name = "Jetson 24pin CSI Connector";
 	compatible = JETSON_COMPATIBLE_P3768;
 
@@ -24,10 +24,10 @@
 					#size-cells = <0>;
 					port@0 {
 						reg = <0>;
-						ark_ov9282_vi_in0: endpoint {
+						ark_imx477_vi_in0: endpoint {
 							port-index = <0>;
 							bus-width = <2>;
-							remote-endpoint = <&ark_ov9282_csi_out0>;
+							remote-endpoint = <&ark_imx477_csi_out0>;
 						};
 					};
 				};
@@ -79,12 +79,12 @@
 				 */
 				modules {
 					module0 {
-						badge = "ark_ov9282_front_OV9282";
+						badge = "ark_imx477_front_IMX477";
 						position = "front";
 						orientation = "0";
 						drivernode0 {
 							pcl_id = "v4l2_sensor";
-							sysfs-device-tree = "/sys/firmware/devicetree/base/bus@0/i2c@3180000/tca9546@70/i2c@0/ark_ov9282_a@10";
+							sysfs-device-tree = "/sys/firmware/devicetree/base/bus@0/i2c@3180000/tca9546@70/i2c@0/ark_imx477_a@10";
 
 						};
 					};
@@ -103,16 +103,16 @@
 								#size-cells = <0>;
 								port@0 {
 									reg = <0>;
-									ark_ov9282_csi_in0: endpoint@0 {
+									ark_imx477_csi_in0: endpoint@0 {
 										port-index = <1>;
 										bus-width = <2>;
-										remote-endpoint = <&ark_ov9282_out0>;
+										remote-endpoint = <&ark_imx477_out0>;
 									};
 								};
 								port@1 {
 									reg = <1>;
-									ark_ov9282_csi_out0: endpoint@1 {
-										remote-endpoint = <&ark_ov9282_vi_in0>;
+									ark_imx477_csi_out0: endpoint@1 {
+										remote-endpoint = <&ark_imx477_vi_in0>;
 									};
 								};
 							};
@@ -136,10 +136,10 @@
 							#size-cells = <0>;
 							i2c-mux,deselect-on-exit;
 							status = "okay";
-							ark_ov9282_a@10 {
+							ark_imx477_a@10 {
 								status = "okay";
 								reset-gpios = <&gpio CAM0_PWDN GPIO_ACTIVE_HIGH>;
-								compatible = "ovti,ov9282";
+								compatible = "ridgerun,imx477";
 								/* I2C device address */
 								reg = <0x10>;
 								/* V4L2 device node location */
@@ -147,7 +147,7 @@
 								/* Physical dimensions of sensor */
 								physical_w = "3.680";
 								physical_h = "2.760";
-								sensor_model = "ov9282";
+								sensor_model = "imx477";
 								use_sensor_mode_id = "true";
 								/**
 								* ==== Modes ====
@@ -320,10 +320,10 @@
 									#size-cells = <0>;
 									port@0 {
 										reg = <0>;
-										ark_ov9282_out0: endpoint {
+										ark_imx477_out0: endpoint {
 											port-index = <0>;
 											bus-width = <2>;
-											remote-endpoint = <&ark_ov9282_csi_in0>;
+											remote-endpoint = <&ark_imx477_csi_in0>;
 										};
 									};
 								};
