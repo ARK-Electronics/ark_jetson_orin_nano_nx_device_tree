@@ -66,7 +66,7 @@
 				min_bits_per_pixel = <10>;
 				vi_peak_byte_per_pixel = <2>;
 				vi_bw_margin_pct = <25>;
-				max_pixel_rate = <7500000>;
+				max_pixel_rate = <240000>;
 				isp_peak_byte_per_pixel = <5>;
 				isp_bw_margin_pct = <25>;
 				/**
@@ -105,7 +105,7 @@
 								port@0 {
 									reg = <0>;
 									ark_imx477_csi_in0: endpoint@0 {
-										port-index = <1>;
+										port-index = <0>;
 										bus-width = <2>;
 										remote-endpoint = <&ark_imx477_out0>;
 									};
@@ -137,6 +137,11 @@
 							#size-cells = <0>;
 							i2c-mux,deselect-on-exit;
 							status = "okay";
+
+							ark_imx219_a@10 {
+								status = "disabled";
+							};
+
 							ark_imx477_a@1a {
 								status = "okay";
 								reset-gpios = <&gpio CAM0_PWDN GPIO_ACTIVE_HIGH>;
@@ -329,6 +334,21 @@
 										};
 									};
 								};
+							};
+						};
+						i2c@1 {
+							ark_imx219_b@10 {
+								status = "disabled";
+							};
+						};
+						i2c@2 {
+							ark_imx219_c@10 {
+								status = "disabled";
+							};
+						};
+						i2c@3 {
+							ark_imx219_d@10 {
+								status = "disabled";
 							};
 						};
 					};
