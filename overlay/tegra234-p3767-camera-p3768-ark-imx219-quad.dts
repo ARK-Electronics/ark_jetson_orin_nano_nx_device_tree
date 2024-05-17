@@ -14,7 +14,7 @@
 #include "tegra234-camera-ark-quad-imx219.dtsi"
 
 / {
-	overlay-name = "Camera IMX219 ARK Quad";
+	overlay-name = "Camera ARK IMX219 Quad";
 	jetson-header-name = "Jetson 24pin CSI Connector";
 	compatible = JETSON_COMPATIBLE_P3768;
 
