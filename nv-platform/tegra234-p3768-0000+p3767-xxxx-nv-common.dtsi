@@ -123,6 +123,10 @@
 			status = "okay";
 		};
 
+		i2c@c240000 {
+			status = "okay";
+		};
+
 		hdr40_i2c1: i2c@c250000 {
 			status = "okay";
 		};
