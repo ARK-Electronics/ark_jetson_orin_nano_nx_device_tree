@@ -9,15 +9,22 @@
 
 / {
 	compatible = "nvidia,p3768-0000+p3767-0000", "nvidia,p3767-0000", "nvidia,tegra234";
-	model = "NVIDIA Jetson Orin NX Engineering Reference Developer Kit";
+	model = "NVIDIA Jetson Orin NX 16GB ARK PAB Jetson Carrier";
 
 	aliases {
 		serial1 = &uarta;
 		serial2 = &uarte;
+		serial3 = &uartb;
 	};
 
 	bus@0 {
 		serial@3100000 {
+			compatible = "nvidia,tegra194-hsuart";
+			reset-names = "serial";
+			status = "okay";
+		};
+
+		serial@3110000 {
 			compatible = "nvidia,tegra194-hsuart";
 			reset-names = "serial";
 			status = "okay";
