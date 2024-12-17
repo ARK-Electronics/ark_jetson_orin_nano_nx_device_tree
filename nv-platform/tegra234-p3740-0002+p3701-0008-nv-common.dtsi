@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-only
-// SPDX-FileCopyrightText: Copyright (c) 2023, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+// SPDX-FileCopyrightText: Copyright (c) 2023-2024, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
 
 #include "nv-soc/tegra234-overlay.dtsi"
 #include "nv-soc/tegra234-soc-thermal.dtsi"
@@ -46,34 +46,82 @@
 	thermal-zones {
 		cpu-thermal {
 			status = "okay";
+
+			cooling-maps {
+				map-hot-surface-alert {
+					cooling-device = <&hot_surface_alert 0 0>;
+				};
+			};
 		};
 
 		cv0-thermal {
 			status = "okay";
+
+			cooling-maps {
+				map-hot-surface-alert {
+					cooling-device = <&hot_surface_alert 0 0>;
+				};
+			};
 		};
 
 		cv1-thermal {
 			status = "okay";
+
+			cooling-maps {
+				map-hot-surface-alert {
+					cooling-device = <&hot_surface_alert 0 0>;
+				};
+			};
 		};
 
 		cv2-thermal {
 			status = "okay";
+
+			cooling-maps {
+				map-hot-surface-alert {
+					cooling-device = <&hot_surface_alert 0 0>;
+				};
+			};
 		};
 
 		gpu-thermal {
 			status = "okay";
+
+			cooling-maps {
+				map-hot-surface-alert {
+					cooling-device = <&hot_surface_alert 0 0>;
+				};
+			};
 		};
 
 		soc0-thermal {
 			status = "okay";
+
+			cooling-maps {
+				map-hot-surface-alert {
+					cooling-device = <&hot_surface_alert 0 0>;
+				};
+			};
 		};
 
 		soc1-thermal {
 			status = "okay";
+
+			cooling-maps {
+				map-hot-surface-alert {
+					cooling-device = <&hot_surface_alert 0 0>;
+				};
+			};
 		};
 
 		soc2-thermal {
 			status = "okay";
+
+			cooling-maps {
+				map-hot-surface-alert {
+					cooling-device = <&hot_surface_alert 0 0>;
+				};
+			};
 		};
 
 		tj-thermal {
@@ -213,15 +261,15 @@
 				status = "okay";
 			};
 
-			se@15810000 {
+			crypto@15810000 {
 				status = "okay";
 			};
 
-			se@15820000 {
+			crypto@15820000 {
 				status = "okay";
 			};
 
-			se@15840000 {
+			crypto@15840000 {
 				status = "okay";
 			};
 
@@ -283,7 +331,7 @@
 
 			ranges = <0x81000000 0x00 0x3a100000 0x00 0x3a100000 0x0 0x00100000      /* downstream I/O (1MB) */
 			          0x82000000 0x00 0x40000000 0x2e 0x30000000 0x0 0x08000000      /* non-prefetchable memory (128MB) */
-			          0xc3000000 0x27 0x40000000 0x27 0x40000000 0x6 0xe0000000>;    /* prefetchable memory (28160MB) */
+			          0xc3000000 0x28 0x00000000 0x28 0x00000000 0x6 0x20000000>;    /* prefetchable memory (25088MB) */
 		};
 
 		gpu@17000000 {

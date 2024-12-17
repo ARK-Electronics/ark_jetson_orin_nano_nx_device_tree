@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0-only
-# SPDX-FileCopyrightText: Copyright (c) 2023, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+# SPDX-FileCopyrightText: Copyright (c) 2023-2024, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
 
 DTC_FLAGS += -@
 
@@ -13,13 +13,21 @@ dtbo-y += tegra-optee.dtbo
 dtbo-y += tegra234-audio-overlay.dtbo
 dtbo-y += tegra234-carveouts.dtbo
 dtbo-y += tegra234-dcb-p3767-0000-hdmi.dtbo
-dtbo-y += tegra234-jetson.dtbo
 dtbo-y += tegra234-p3737-0000+p3701-0000-as-p3701-0004.dtbo
 dtbo-y += tegra234-p3737-0000+p3701-0000-as-p3767-0000.dtbo
 dtbo-y += tegra234-p3737-0000+p3701-0000-as-p3767-0001.dtbo
 dtbo-y += tegra234-p3737-0000+p3701-0000-as-p3767-0003.dtbo
 dtbo-y += tegra234-p3737-0000+p3701-0000-as-p3767-0004.dtbo
+dtbo-y += tegra234-p3737-0000+p3701-0000-dynamic.dtbo
 dtbo-y += tegra234-p3768-0000+p3767-0000-dynamic.dtbo
+dtbo-y += tegra234-p3737-0000+p3701-0000-audio-adafruit-uda1334a.dtbo
+dtbo-y += tegra234-p3737-0000+p3701-0000-audio-adafruit-sph0645lm4h.dtbo
+dtbo-y += tegra234-p3737-0000+p3701-0000-audio-fe-pi.dtbo
+dtbo-y += tegra234-p3737-0000+p3701-0000-audio-respeaker-4-mic-array.dtbo
+dtbo-y += tegra234-p3737-0000+p3701-0000-audio-respeaker-4-mic-lin-array.dtbo
+dtbo-y += tegra234-p3737-0000+p3701-0000-csi.dtbo
+dtbo-y += tegra234-p3737-0000+p3701-0000-hdr40.dtbo
+dtbo-y += tegra234-p3737-0000+p3701-0000-m2ke.dtbo
 dtbo-y += tegra234-p3767-0000+p3509-a02-audio-adafruit-sph0645lm4h.dtbo
 dtbo-y += tegra234-p3767-0000+p3509-a02-audio-adafruit-uda1334a.dtbo
 dtbo-y += tegra234-p3767-0000+p3509-a02-audio-fe-pi.dtbo

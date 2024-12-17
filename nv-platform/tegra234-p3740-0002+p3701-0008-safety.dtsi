@@ -82,12 +82,31 @@
 		};
 	};
 
+	edge_safety_service {
+		compatible = "nvidia,edge-safety-gateway";
+		status = "okay";
+		channelid_list = <7 8>;
+	};
+
 	fsicom_client {
 		status = "okay";
 	};
 
 	FsiComIvc {
 		status = "okay";
+		nChannel = <9>;
+		channel_7 {
+			frame-count = <4>;
+			frame-size = <10240>;
+			core-id = <0>;
+			NvSciCh = "nvfsicom_CcplexApp_client";
+		};
+                channel_8 {
+			frame-count = <4>;
+			frame-size = <10240>;
+			core-id = <0>;
+			NvSciCh = "nvfsicom_FsiApp_client";
+		};
 	};
 
 	/* FSI<->CCPLEX Communication through DRAM Carveout demo app */

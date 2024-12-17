@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-only
-// SPDX-FileCopyrightText: Copyright (c) 2023, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+// SPDX-FileCopyrightText: Copyright (c) 2023-2024, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
 
 #include "nv-soc/tegra234-soc-audio-dai-links.dtsi"
 
@@ -173,9 +173,9 @@
 	};
 
 	eeprom-manager {
-		bus@0 {
+		bus@1 {
 			i2c-bus = <&dp_aux_ch2_i2c>;
-			eeprom@1 {
+			eeprom@0 {
 				slave-address = <0x55>;
 				label = "cvb";
 			};
