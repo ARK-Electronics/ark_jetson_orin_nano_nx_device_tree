@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-only
-// SPDX-FileCopyrightText: Copyright (c) 2022-2023, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+// SPDX-FileCopyrightText: Copyright (c) 2022-2024, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
 
 #include "tegra234-p3701-0000-prod-overlay.dtsi"
 
@@ -93,22 +93,6 @@
 				rail-name-loopA = "SOC";
 				rail-name-loopB = "CV";
 			};
-		};
-	};
-
-	thermal-zones {
-		tboard-thermal {
-			polling-delay = <1000>;
-			polling-delay-passive = <1000>;
-			thermal-sensors = <&tegra_tmp451 0>;
-			status = "okay";
-		};
-
-		tdiode-thermal {
-			polling-delay = <1000>;
-			polling-delay-passive = <1000>;
-			thermal-sensors = <&tegra_tmp451 1>;
-			status = "okay";
 		};
 	};
 

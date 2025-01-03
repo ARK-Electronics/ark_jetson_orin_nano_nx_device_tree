@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-only
-// SPDX-FileCopyrightText: Copyright (c) 2023, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+// SPDX-FileCopyrightText: Copyright (c) 2023-2024, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
 // Jetson Device-tree overlay for OP-TEE.
 
 /dts-v1/;
@@ -19,6 +19,10 @@
 				optee {
 					compatible = "linaro,optee-tz";
 					method = "smc";
+					status = "disabled";
+				};
+				ftpm {
+					compatible = "microsoft,ftpm";
 					status = "disabled";
 				};
 			};

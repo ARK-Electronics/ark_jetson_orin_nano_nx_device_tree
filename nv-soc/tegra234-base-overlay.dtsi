@@ -318,7 +318,7 @@
 			nvidia,vm-irq-config = <&eqos_vm_irq_config>;
 			status = "disabled";
 			nvidia,dcs-enable = <0x1>;
-			nvidia,macsec-enable = <0x1>;
+			nvidia,macsec-enable = <0>;
 			nvidia,pad_calibration = <0x1>;
 			/* pad calibration 2's complement offset for pull-down value */
 			nvidia,pad_auto_cal_pd_offset = <0x0>;
@@ -343,7 +343,6 @@
 		};
 
 		ethernet@6800000 {
-			compatible = "nvidia,tegra234-mgbe";
 			reg = <0x0 0x06800000 0x0 0x10000>, /* HV base */
 			      <0x0 0x06810000 0x0 0x10000>, /* MGBE base */
 			      <0x0 0x068A0000 0x0 0x10000>, /* XPCS base */
@@ -382,8 +381,6 @@
 				      "mgbe_macsec", "rx-input";
 			interconnects = <&mc TEGRA234_MEMORY_CLIENT_MGBEARD>,
 					<&mc TEGRA234_MEMORY_CLIENT_MGBEAWR>;
-			interconnect-names = "dma-mem", "write";
-			iommus = <&smmu_niso0 TEGRA234_SID_MGBE>;
 			nvidia,vm-irq-config = <&mgbe_vm_irq_config>;
 			nvidia,num-dma-chans = <10>;
 			nvidia,dma-chans = <0 1 2 3 4 5 6 7 8 9>;
@@ -396,7 +393,7 @@
 			nvidia,tx-queue-prio = <0 1 2 3 4 5 6 7 0 0>;
 			nvidia,rx-queue-prio = <0x1 0x2 0x4 0x8 0x10 0x20 0x40 0x80 0x0 0x0>;
 			nvidia,dcs-enable = <0x1>;
-			nvidia,macsec-enable = <0x1>;
+			nvidia,macsec-enable = <0>;
 			nvidia,rx_riwt = <512>;
 			nvidia,rx_frames = <64>;
 			nvidia,tx_usecs = <256>;
@@ -429,8 +426,16 @@
 			status = "disabled";
 		};
 
+		sce-fabric@b600000 {
+			status = "disabled";
+		};
+
 		hardware-timestamp@c1e0000 {
 			status = "disabled";
+		};
+
+		dce-fabric@de00000 {
+			compatible = "nvidia,tegra234-dce-fabric";
 		};
 
 		i2c@3160000 {
@@ -654,6 +659,12 @@
 			mmc-hs400-enhanced-strobe;
 			cap-sd-highspeed;
 			cap-mmc-highspeed;
+		};
+
+		smmu_test {
+			compatible = "nvidia,smmu_test";
+			iommus = <&smmu_niso0 TEGRA234_SID_SMMU_TEST>;
+			status = "okay";
 		};
 	};
 
