@@ -134,18 +134,18 @@
 						skip_mux_detect = "yes";
 						force_bus_start = <CAMERA_I2C_MUX_BUS(0)>;
 						i2c@0 {
+							status = "okay";
 							reg = <0>;
 							#address-cells = <1>;
 							#size-cells = <0>;
 							i2c-mux,deselect-on-exit;
-							status = "okay";
 
 							ark_imx219_a@10 {
 								status = "disabled";
 							};
 
 							ark_arducam_a@0c {
-								status = "okay";
+								// status = "okay";
 								reset-gpios = <&gpio CAM0_PWDN GPIO_ACTIVE_HIGH>;
 								compatible = "arducam,arducam-csi2";
 								reg = <0x0c>;
