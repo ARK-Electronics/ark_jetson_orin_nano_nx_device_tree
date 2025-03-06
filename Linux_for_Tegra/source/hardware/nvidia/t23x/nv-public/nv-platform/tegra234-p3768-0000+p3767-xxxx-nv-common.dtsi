@@ -10,7 +10,7 @@
 #include "tegra234-p3768-0000.dtsi"
 #include "tegra234-p3767-0000.dtsi"
 #include "nv-soc/tegra234-soc-camera.dtsi"
-#include "tegra234-dcb-p3737-0000-p3701-0000.dtsi"
+#include "tegra234-dcb-p3737-0000-p3701-0000-hdmi.dtsi"
 #include <dt-bindings/gpio/tegra234-gpio.h>
 
 / {
@@ -428,7 +428,7 @@
 
 	display@13800000 {
 		/* os_gpio_hotplug_a is used for hotplug */
-		os_gpio_hotplug_a = <&gpio TEGRA234_MAIN_GPIO(M, 0) GPIO_ACTIVE_HIGH>;
+		os_gpio_hotplug_a = <&gpio TEGRA234_MAIN_GPIO(M, 0) GPIO_ACTIVE_LOW>;
 		status = "okay";
 	};
 
