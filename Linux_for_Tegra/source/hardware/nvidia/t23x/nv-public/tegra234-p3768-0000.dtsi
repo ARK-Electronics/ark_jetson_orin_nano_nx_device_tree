@@ -83,19 +83,12 @@
 			};
 
 			ports {
-				/* recovery port when micro usb connected, otherwise pixhawk */
+				/* recovery port */
 				usb2-0 {
 					mode = "otg";
 					vbus-supply = <&vdd_5v0_sys>;
 					status = "okay";
 					usb-role-switch;
-
-					connector {
-						compatible = "usb-b-connector", "gpio-usb-b-connector";
-						label = "micro-USB";
-						type = "micro";
-						id-gpio = <&gpio TEGRA234_MAIN_GPIO(Z, 1) GPIO_ACTIVE_LOW>;
-					};
 				};
 
 				/* hub */
@@ -105,16 +98,16 @@
 					status = "okay";
 				};
 
-				/* single USB A port */
+				/* M.2 Key-E */
 				usb2-2 {
 					mode = "host";
 					vbus-supply = <&vdd_5v0_sys>;
 					status = "okay";
 				};
 
-				/* single USB A port */
+				/* USB C */
 				usb3-0 {
-					nvidia,usb2-companion = <2>;
+					nvidia,usb2-companion = <0>;
 					status = "okay";
 				};
 
@@ -135,8 +128,9 @@
 		usb@3550000 {
 			status = "okay";
 
-			phys = <&{/bus@0/padctl@3520000/pads/usb2/lanes/usb2-0}>;
-			phy-names = "usb2-0";
+			phys = <&{/bus@0/padctl@3520000/pads/usb2/lanes/usb2-0}>,
+			       <&{/bus@0/padctl@3520000/pads/usb3/lanes/usb3-0}>;
+			phy-names = "usb2-0", "usb3-0";
 		};
 
 		usb@3610000 {
@@ -186,7 +180,7 @@
 			phy-names = "p2u-0", "p2u-1", "p2u-2", "p2u-3";
 		};
 
-		/* C7 - M.2 Key-M */
+		/* C7 - Pi 5 PCIE FFC Connector */
 		pcie@141e0000 {
 			status = "okay";
 
