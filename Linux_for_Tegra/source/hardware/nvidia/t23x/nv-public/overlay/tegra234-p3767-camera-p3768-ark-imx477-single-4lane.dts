@@ -141,9 +141,6 @@
 							ark_imx219_a@10 {
 								status = "disabled";
 							};
-							ark_imx219_b@10 {
-								status = "disabled";
-							};
 							ark_imx477_a@1a {
 								status = "okay";
 								reset-gpios = <&gpio CAM0_PWDN GPIO_ACTIVE_HIGH>;
@@ -336,6 +333,11 @@
 										};
 									};
 								};
+							};
+						};
+						i2c@1 {
+							ark_imx219_b@10 {
+								status = "disabled";
 							};
 						};
 					};
