@@ -28,7 +28,7 @@
 					port@0 {
 						reg = <0>;
 						ark_imx477_vi_in0: endpoint {
-							port-index = <0>;
+							port-index = <1>;
 							bus-width = <4>;
 							remote-endpoint = <&ark_imx477_csi_out0>;
 						};
@@ -36,7 +36,7 @@
 					port@1 {
 						reg = <1>;
 						ark_imx477_vi_in1: endpoint {
-							port-index = <2>;
+							port-index = <3>;
 							bus-width = <4>;
 							remote-endpoint = <&ark_imx477_csi_out1>;
 						};
@@ -95,7 +95,7 @@
 						orientation = "1";
 						drivernode0 {
 							pcl_id = "v4l2_sensor";
-							sysfs-device-tree = "/sys/firmware/devicetree/base/bus@0/i2c@3180000/tca9546@70/i2c@0/ark_imx477_a@1a";
+							sysfs-device-tree = "/sys/firmware/devicetree/base/bus@0/i2c@3180000/tca9546@70/i2c@0/ark_imx477_b@1a";
 						};
 					};
 					module1 {
@@ -104,7 +104,7 @@
 						orientation = "1";
 						drivernode0 {
 							pcl_id = "v4l2_sensor";
-							sysfs-device-tree = "/sys/firmware/devicetree/base/bus@0/i2c@3180000/tca9546@70/i2c@1/ark_imx477_c@1a";
+							sysfs-device-tree = "/sys/firmware/devicetree/base/bus@0/i2c@3180000/tca9546@70/i2c@1/ark_imx477_d@1a";
 						};
 					};
 				};
@@ -123,7 +123,7 @@
 								port@0 {
 									reg = <0>;
 									ark_imx477_csi_in0: endpoint@0 {
-										port-index = <0>;
+										port-index = <1>;
 										bus-width = <4>;
 										remote-endpoint = <&ark_imx477_out0>;
 									};
@@ -144,7 +144,7 @@
 								port@0 {
 									reg = <0>;
 									ark_imx477_csi_in1: endpoint@2 {
-										port-index = <2>;
+										port-index = <3>;
 										bus-width = <4>;
 										remote-endpoint = <&ark_imx477_out1>;
 									};
@@ -182,7 +182,7 @@
 							ark_imx219_b@10 {
 								status = "disabled";
 							};
-							ark_imx477_a@1a {
+							ark_imx477_b@1a {
 								reset-gpios = <&gpio CAM0_PWDN GPIO_ACTIVE_HIGH>;
 								compatible = "ridgerun,imx477";
 								/* I2C device address */
@@ -367,7 +367,7 @@
 										reg = <0>;
 										ark_imx477_out0: endpoint {
 											status = "okay";
-											port-index = <0>;
+											port-index = <1>;
 											bus-width = <4>;
 											remote-endpoint = <&ark_imx477_csi_in0>;
 										};
@@ -386,7 +386,7 @@
 							ark_imx219_d@10 {
 								status = "disabled";
 							};
-							ark_imx477_c@1a {
+							ark_imx477_d@1a {
 								reset-gpios = <&gpio CAM1_PWDN GPIO_ACTIVE_HIGH>;
 								compatible = "ridgerun,imx477";
 								/* I2C device address */
@@ -401,7 +401,7 @@
 								mode0 { /* IMX477_MODE_3840x2160 */
 									mclk_khz = "24000";
 									num_lanes = "4";
-									tegra_sinterface = "serial_c";
+									tegra_sinterface = "serial_d";
 									phy_mode = "DPHY";
 									discontinuous_clk = "no";
 									dpcm_enable = "false";
@@ -439,7 +439,7 @@
 								mode1 { /* IMX477_MODE_1920X1080 */
 									mclk_khz = "24000";
 									num_lanes = "4";
-									tegra_sinterface = "serial_c";
+									tegra_sinterface = "serial_d";
 									phy_mode = "DPHY";
 									discontinuous_clk = "no";
 									dpcm_enable = "false";
@@ -481,7 +481,7 @@
 										reg = <0>;
 										ark_imx477_out1: endpoint {
 											status = "okay";
-											port-index = <2>;
+											port-index = <3>;
 											bus-width = <4>;
 											remote-endpoint = <&ark_imx477_csi_in1>;
 										};
