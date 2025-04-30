@@ -299,10 +299,10 @@
 									pixel_phase = "rggb";
 									csi_pixel_bit_depth = "10";
 									readout_orientation = "90";
-									line_length = "5832";
+									line_length = "11200";
 									inherent_gain = "1";
 									mclk_multiplier = "80";
-									pix_clk_hz = "600000000";
+									pix_clk_hz = "300000000";
 									gain_factor = "16";
 									framerate_factor = "1000000";
 									exposure_factor = "1000000";
@@ -337,10 +337,10 @@
 									pixel_phase = "rggb";
 									csi_pixel_bit_depth = "10";
 									readout_orientation = "90";
-									line_length = "3076";
+									line_length = "7000";
 									inherent_gain = "1";
 									mclk_multiplier = "80";
-									pix_clk_hz = "600000000";
+									pix_clk_hz = "300000000";
 									gain_factor = "16";
 									framerate_factor = "1000000";
 									exposure_factor = "1000000";
