@@ -287,7 +287,7 @@
 								mode0 { /* IMX477_MODE_3840x2160 */
 									mclk_khz = "24000";
 									num_lanes = "4";
-									tegra_sinterface = "serial_a";
+									tegra_sinterface = "serial_b";
 									phy_mode = "DPHY";
 									discontinuous_clk = "no";
 									dpcm_enable = "false";
@@ -299,10 +299,10 @@
 									pixel_phase = "rggb";
 									csi_pixel_bit_depth = "10";
 									readout_orientation = "90";
-									line_length = "11200";
+									line_length = "5832";
 									inherent_gain = "1";
 									mclk_multiplier = "80";
-									pix_clk_hz = "300000000";
+									pix_clk_hz = "600000000";
 									gain_factor = "16";
 									framerate_factor = "1000000";
 									exposure_factor = "1000000";
@@ -325,7 +325,7 @@
 								mode1 { /* IMX477_MODE_1920X1080 */
 									mclk_khz = "24000";
 									num_lanes = "4";
-									tegra_sinterface = "serial_a";
+									tegra_sinterface = "serial_b";
 									phy_mode = "DPHY";
 									discontinuous_clk = "no";
 									dpcm_enable = "false";
@@ -337,10 +337,10 @@
 									pixel_phase = "rggb";
 									csi_pixel_bit_depth = "10";
 									readout_orientation = "90";
-									line_length = "7000";
+									line_length = "3076";
 									inherent_gain = "1";
 									mclk_multiplier = "80";
-									pix_clk_hz = "300000000";
+									pix_clk_hz = "600000000";
 									gain_factor = "16";
 									framerate_factor = "1000000";
 									exposure_factor = "1000000";
@@ -413,10 +413,10 @@
 									pixel_phase = "rggb";
 									csi_pixel_bit_depth = "10";
 									readout_orientation = "90";
-									line_length = "11200";
+									line_length = "5832";
 									inherent_gain = "1";
 									mclk_multiplier = "80";
-									pix_clk_hz = "300000000";
+									pix_clk_hz = "600000000";
 									gain_factor = "16";
 									framerate_factor = "1000000";
 									exposure_factor = "1000000";
@@ -451,10 +451,10 @@
 									pixel_phase = "rggb";
 									csi_pixel_bit_depth = "10";
 									readout_orientation = "90";
-									line_length = "7000";
+									line_length = "3076";
 									inherent_gain = "1";
 									mclk_multiplier = "80";
-									pix_clk_hz = "300000000";
+									pix_clk_hz = "600000000";
 									gain_factor = "16";
 									framerate_factor = "1000000";
 									exposure_factor = "1000000";
